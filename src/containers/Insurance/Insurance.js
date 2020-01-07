@@ -2,10 +2,28 @@ import React, { Component } from 'react'
 import { Button, Form } from "semantic-ui-react";
 
 export default class Insurance extends Component {
+  constructor(props) {
+        super(props)
+        this.state = {
+          planName: "",
+          idNumber: "",
+          insuranceAddress: "",
+          groupNumber: "",
+          policyHolder: "",
+          effectiveDate: "",
+          policyHolderSS: "",
+          policyHolderDob: ""
+        };
+  }
+
+  handleChange = (event) => {
+        const { name, value } = event.target;
+        this.setState({
+          [name]: value
+        });   
+    }
     render() {
-        if (this.props.currentStep !== 3) {
-          return null;
-        }  
+        
         return (
           <div>
             <Form size="large">
@@ -17,8 +35,6 @@ export default class Insurance extends Component {
                   id="planName"
                   name="planName"
                   width={6}
-                  value={this.props.planName}
-                  onChange={this.props.handleChange}
                 />
 
                 <label htmlFor="idNumber">I.D. Number:</label>
@@ -26,8 +42,6 @@ export default class Insurance extends Component {
                   id="idNumber"
                   name="idNumber"
                   width={6}
-                  value={this.props.idNumber}
-                  onChange={this.props.handleChange}
                 />
               </Form.Group>
 
@@ -38,8 +52,6 @@ export default class Insurance extends Component {
                   id="insuranceAddress"
                   name="insuranceAddress"
                   width={6}
-                  value={this.props.insuranceAddress}
-                  onChange={this.props.handleChange}
                 />
 
                 <label htmlFor="groupNumber">Group Number:</label>
@@ -47,8 +59,6 @@ export default class Insurance extends Component {
                   id="groupNumber"
                   name="groupNumber"
                   width={6}
-                  value={this.props.groupNumber}
-                  onChange={this.props.handleChange}
                 />
               </Form.Group>
 
@@ -59,8 +69,6 @@ export default class Insurance extends Component {
                   id="policyHolder"
                   name="policyHolder"
                   width={6}
-                  value={this.props.policyHolder}
-                  onChange={this.props.handleChange}
                 />
 
                 <label htmlFor="effectiveDate">Effective Date:</label>
@@ -68,8 +76,6 @@ export default class Insurance extends Component {
                   type="date"
                   id="effectiveDate"
                   name="effectiveDate"
-                  value={this.props.effectiveDate}
-                  onChange={this.props.handleChange}
                 />
               </Form.Group>
 
@@ -80,8 +86,6 @@ export default class Insurance extends Component {
                 <Form.Input
                   id="policyHolderSS"
                   name="policyHolderSS"
-                  value={this.props.policyHolderSS}
-                  onChange={this.props.handleChange}
                   width={6}
                 />
               </Form.Group>
@@ -92,8 +96,6 @@ export default class Insurance extends Component {
                   type="date"
                   id="policyHolderDob"
                   name="policyHolderDob"
-                  value={this.props.policyHolderDob}
-                  onChange={this.props.handleChange}
                 />
               </Form.Group>
 

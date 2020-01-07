@@ -2,10 +2,17 @@ import React, { Component } from 'react'
 import { Button, Form } from "semantic-ui-react";
 
 export default class Emergency extends Component {
+  constructor(props) {
+        super(props)
+        this.state = {
+          emergencyContact: "",
+          emergencyAddress: "",
+          emergencyCell: "",
+          emergencyWork: "",
+          relationship: ""
+        };
+  }
     render() {
-        if (this.props.currentStep !== 2) {
-          return null;
-        }  
         return (
           <div>
             <Form size="large">
@@ -17,8 +24,6 @@ export default class Emergency extends Component {
                   id="emergencyContact"
                   name="emergencyContact"
                   width={6}
-                  value={this.props.emergencyContact}
-                  onChange={this.props.handleChange}
                 />
 
                 <label htmlFor="emergencyAddress">Address:</label>
@@ -26,8 +31,6 @@ export default class Emergency extends Component {
                   id="emergencyAddress"
                   name="emergencyAddress"
                   width={6}
-                  value={this.props.emergencyAddress}
-                  onChange={this.props.handleChange}
                 />
               </Form.Group>
 
@@ -38,32 +41,17 @@ export default class Emergency extends Component {
                   id="emergencyCell"
                   name="emergencyCell"
                   width={6}
-                  value={this.props.emergencyCell}
-                  onChange={this.props.handleChange}
                 />
 
                 <label htmlFor="emergencyWork">Work Phone:</label>
-                <Form.Input
-                  id="emergencyWork"
-                  name="emergencyWork"
-                  width={6}
-                  value={this.props.emergencyWork}
-                  onChange={this.props.handleChange}
-                />
+                <Form.Input id="emergencyWork" name="emergencyWork" width={6} />
               </Form.Group>
 
               <Form.Group inline>
                 <label htmlFor="relationship">Relationship:</label>
-                <Form.Input
-                  id="relationship"
-                  name="relationship"
-                  width={8}
-                  value={this.props.relationship}
-                  onChange={this.props.handleChange}
-                />
+                <Form.Input id="relationship" name="relationship" width={8} />
               </Form.Group>
-
-              {/* <Button primary>Save and Continue</Button> */}
+              <Button primary>Submit</Button>
             </Form>
           </div>
         );
